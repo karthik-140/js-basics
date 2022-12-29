@@ -4,7 +4,7 @@ class user{
         this.email=email;
         this.password=password;
         user.registeredusers++;
-        this.membership=Date();
+        this.membership=new Date();
     }
     static countusers(){
         console.log('Total number of users registered: '+user.registeredusers);
@@ -25,6 +25,7 @@ class member extends user{
         console.log(this.name+' is registered to '+this.package+' package');
     }
     renewmembership(){
+        console.log('Validity :-');
         if(this.package=='standard'){
          console.log(this.membership.getMonth()+1);
         }
@@ -36,10 +37,15 @@ class member extends user{
 user.registeredusers=0;
 
 
-const ram=new member('ram','ram@gmail.com',1234,'standard');
+const ram=new member('ram','ram@gmail.com',1234,'yearly');
 ram.registereduser();
 ram.getpackage();
 ram.renewmembership();
+
+const sethu=new member('sethu','sethu@gmail.com',1542,'standard');
+sethu.registereduser();
+sethu.getpackage();
+sethu.renewmembership();
 
 user.countusers();
 

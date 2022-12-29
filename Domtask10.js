@@ -6,20 +6,20 @@ function onsubmit(e){
     const ans={
         name:e.target.name.value,
         Email:e.target.email.value
-    };
-
-            // var name=JSON.stringify(e.target.name.value);
-            // var Email=JSON.stringify(e.target.email.value);
-
-            //  localStorage.setItem('user1Name',name);
-            //  localStorage.setItem('user1Email',Email);   
-    
+    };  
     var json=JSON.stringify(ans);
-            //console.log(json);
+    localStorage.setItem(ans.Email,json);
+    
+    
 
-    localStorage.setItem('name',json);
-            // // console.log(localStorage);
+    var showuser=document.querySelector('.container');
+    var li=document.createElement('li');
+    li.className='list-group-item';
+    li.appendChild(document.createTextNode(json));
 
-            // var jsonp=JSON.parse(localStorage.getItem('name'));
-            // console.log(jsonp);
+    showuser.appendChild(li);
+          
         }
+        
+
+      

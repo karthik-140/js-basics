@@ -1,4 +1,4 @@
-const obj={num:2};
+/*const obj={num:2};
 
 const addnum=function(a,b,c){
     return this.num + a+b+c;
@@ -11,4 +11,12 @@ console.log("apply function:- "+addnum.apply(obj,arr));
 
 
 const bound=addnum.bind(obj);
-console.log("bind function:-  "+bound(3,5,4));
+console.log("bind function:-  "+bound(3,5,4));*/
+
+const student={age:20};
+
+const func=function(a){
+    return this.age+a;
+}
+const bound=func.bind(student);
+console.log(bound(0));

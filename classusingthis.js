@@ -20,6 +20,17 @@ class student{
             console.log(`${this.name} - is not eligible`);
         }
     }
+    eligibleForPlacements(minage){
+        return (minmarks) => {
+            if(this.marks>minmarks && this.age>minage){
+                console.log(this.name+" is eligible for placements");
+            }
+            else{
+                console.log(this.name+" is not eligible for placements");
+            }
+        }
+        
+    }
 }
 student.count=0
 const user1=new student('karthik',22,'9743632461',80);
@@ -27,9 +38,14 @@ const user2=new student('tharun',23,'8666444774',30);
 const user3=new student('vamshi',21,'8999777711',60);
 const user4=new student('omkar',24,'9888755567',35);
 const user5=new student('roman',25,'6723468534',50);
-user1.eligibility();
+/*user1.eligibility();
 user2.eligibility();
 user3.eligibility();
 user4.eligibility();
-user5.eligibility();
+user5.eligibility();*/
+user1.eligibleForPlacements(20)(40);
+user2.eligibleForPlacements(20)(40);
+user3.eligibleForPlacements(20)(40);
+user4.eligibleForPlacements(20)(40);
+user5.eligibleForPlacements(20)(40);
 student.countUsers();

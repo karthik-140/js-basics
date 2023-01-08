@@ -16,7 +16,7 @@ console.log("bind function:-  "+bound(3,5,4));*/
 const student={age:20};
 
 const func=function(a){
-    return this.age+a;
+    return this.age;
 }
 const bound=func.bind(student);
-console.log(bound(0));
+console.log(bound());

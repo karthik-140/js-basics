@@ -91,3 +91,13 @@ function updateLastUserActivityTime(){
 //    deletePost().then(()=>{getPosts()})
 //    console.log(print)
 // })
+
+
+/*Why were promises discovered?
+Why are async await better than promise.then design pattern? ? 
+
+=> promises are discovered because they will run the code more efficiently and effectively,
+ promises are also act as security access between the user interface and server.
+
+==>async await is more better than promises because, no matter of how much time function takes to execute,
+ by using async await we can stop the function for a while as of the requirement*/

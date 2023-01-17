@@ -11,7 +11,7 @@ function onsubmit(e){
     };
     //var json=JSON.stringify(obj);
 
-    axios.post("https://crudcrud.com/api/e6c831ea77034ee0b58e5f27641a7848/appointmentdata",obj)
+    axios.post("https://crudcrud.com/api/99d16bd2e537473e80dd9fe0778ed5b6/appointmentdata",obj)
     .then((response)=>{
         showNewUserOnScreen(response.data)
         console.log(response);
@@ -27,7 +27,7 @@ function onsubmit(e){
 }
 window.addEventListener("DOMContentLoaded", () => {
 
-     axios.get("https://crudcrud.com/api/e6c831ea77034ee0b58e5f27641a7848/appointmentdata")
+     axios.get("https://crudcrud.com/api/99d16bd2e537473e80dd9fe0778ed5b6/appointmentdata")
      .then((response)=>{
         console.log(response)
 
@@ -59,7 +59,7 @@ function showNewUserOnScreen(user){
     }
     const parentNode=document.getElementById('users');
     const childHTML= `<li id=${user.Email}>${user.name} - ${user.Email}
-                  <button onclick=deleteUser('${user.Email}') style="float:right; margin-left:5px;">Delete</button>
+                  <button onclick=deleteUser('${user._id}') style="float:right; margin-left:5px;">Delete</button>
                   <button onclick=editUser('${user.Email}','${user.name}') style="float:right;">Edit</button>
                    </li>`
 parentNode.innerHTML=parentNode.innerHTML+childHTML
@@ -70,11 +70,21 @@ function editUser(email,name){
     deleteUser(email);
  }
 function deleteUser(email){
-    localStorage.removeItem(email);
-    removeUserFromScreen(email);
+    axios.delete(`https://crudcrud.com/api/99d16bd2e537473e80dd9fe0778ed5b6/appointmentdata/${email}`)
+    .then((response)=>{
+        removeUserFromScreen(email);
+        console.log(response);
+    })
+    .catch((err)=>{
+        console.log(err)
+    });
+    // localStorage.removeItem(email);
 }
 function removeUserFromScreen(email){
    const parentNode=document.getElementById('users');
    const removeChildNode=document.getElementById(email);
-   parentNode.removeChild(removeChildNode);
+   if(removeChildNode){
+    parentNode.removeChild(removeChildNode);
+   }
+   
 }

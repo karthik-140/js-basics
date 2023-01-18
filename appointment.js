@@ -11,7 +11,7 @@ function onsubmit(e){
     };
     //var json=JSON.stringify(obj);
 
-    axios.post("https://crudcrud.com/api/d538c70af7eb4310b5686ff6c9f07df2/appointmentdata",obj)
+    axios.post("https://crudcrud.com/api/84e6596a7edf4913be57413d763b31ec/appointmentdata",obj)
     .then((response)=>{
         showNewUserOnScreen(response.data)
         console.log(response);
@@ -27,7 +27,7 @@ function onsubmit(e){
 }
 window.addEventListener("DOMContentLoaded", () => {
 
-     axios.get("https://crudcrud.com/api/d538c70af7eb4310b5686ff6c9f07df2/appointmentdata")
+     axios.get("https://crudcrud.com/api/84e6596a7edf4913be57413d763b31ec/appointmentdata")
      .then((response)=>{
         console.log(response)
 
@@ -57,24 +57,29 @@ function showNewUserOnScreen(user){
        if(localStorage.getItem(user.Email!==null)){
        removeUserFromScreen(user.Email);
     }  
-    // if(axios.get(`https://crudcrud.com/api/99d16bd2e537473e80dd9fe0778ed5b6/appointmentdata/${user._id}`)!==null){
-    //    removeUserFromScreen(user._id)
-    // }
     const parentNode=document.getElementById('users');
     const childHTML= `<li id=${user._id}>${user.name} - ${user.Email}
                   <button onclick=deleteUser('${user._id}') style="float:right; margin-left:5px;">Delete</button>
-                  <button onclick=editUser('${user.Email}','${user.name}') style="float:right;">Edit</button>
+                  <button onclick=editUser('${user.name}','${user.Email}','${user._id}') style="float:right;">Edit</button>
                    </li>`
 parentNode.innerHTML=parentNode.innerHTML+childHTML
 }
-function editUser(email,name){
-    document.getElementById('email').value=email;
+function editUser(name,email,_id){
     document.getElementById('name').value=name;
-    deleteUser(email);
+    document.getElementById('email').value=email;
+    axios.put("https://crudcrud.com/api/84e6596a7edf4913be57413d763b31ec/appointmentdata/"+_id,{
+        'name':document.getElementById('name').value,
+        'email':document.getElementById('email').value
+    })
+    .then((response)=>{
+        deleteUser(_id);
+        console.log(response);
+    })
+    .catch(err=>console.log(err))
  }
 function deleteUser(_id){
   // console.log(_id)
-    axios.delete(`https://crudcrud.com/api/d538c70af7eb4310b5686ff6c9f07df2/appointmentdata/${_id}`)
+    axios.delete(`https://crudcrud.com/api/84e6596a7edf4913be57413d763b31ec/appointmentdata/${_id}`)
     .then((response)=>{
         removeUserFromScreen(_id);
         console.log(response);

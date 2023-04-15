@@ -591,3 +591,149 @@ for(var i=0;i<key.length;i++){
 // console.log(typeof(arr));
  
 
+
+                                                                         // callback function
+
+// function callback(){
+//     console.log("callback executed");
+// }
+
+// function myfunction(data, callback){
+//     console.log(data.name);
+//     callback();
+// }
+
+// myfunction({name: "karthik"}, callback);
+
+
+                                                                             // Promises
+
+// const get = () =>{
+//     console.log("get printed")
+// }
+
+// const comp = (data) =>{
+//     return new Promise((resolve, reject) =>{
+//        console.log(data.name);
+//        resolve();
+//     })
+// }
+// comp({name: "karthik"}).then(get()).catch((err) => console.log(err));
+
+                                                                              //Call, apply, bind
+
+// let obj = {age: 5};
+
+// function component(a,b,c){
+//     console.log(this.age +a+b+c);
+// }
+
+// component.call(obj,5,2,3)
+
+// const arr=[1,2,3]
+// component.apply(obj,arr);
+
+// const bound=component.bind(obj);
+// bound(5,5,5);
+
+                                                                           //currying
+// const component = (a) => {
+//     return (b)=>{
+//         return (c) =>{
+//             console.log((a*b) + c);
+//         }
+//     }
+// }
+
+// component(5)(5)(5);
+
+                                                                      // Insertion sort
+// const arr=[5,3,8,4,2];
+
+// for(let i=1;i<arr.length;i++){
+//     let temp=arr[i];
+//     let j=i+1;
+//     while(j>=0 && temp<arr[j]){
+//         arr[j+1]=arr[j];
+//         j=j-1;
+//     }
+//     arr[j+1]=temp;
+// }
+// console.log(arr);
+
+                                                                    // Selection sort
+// const arr=[5,3,8,4,2,1,9,7,6,10];
+
+// for(let i=0;i<arr.length-1;i++){
+//     let index=i;
+//     for(let j=i+1;j<arr.length;j++){
+//         if(arr[j]<arr[index]){
+//             index=j;
+//         }
+//     }
+//     let temp=arr[i];
+//     arr[i]=arr[index];
+//     arr[index]=temp;
+// }
+// console.log(arr);
+
+                                                                     //  Merge Sort
+// const arr=[5,3,8,4,2,1,9,7,6,10];
+
+// function mergeSort(arr){
+//     let n=arr.length;
+//     if(n<=1){
+//         return arr;
+//     }
+//     let mid=Math.floor(n/2);
+//     let left=mergeSort(arr.slice(0,mid));
+//     let right=mergeSort(arr.slice(mid));
+//     return merge(left, right);
+// }
+
+// function merge(left, right){
+//     let result = [];
+//     let i=0;
+//     let j=0;
+//     while(i<left.length && j<right.length){
+//         if(left[i]<right[j]){
+//             result.push(left[i]);
+//             i++;
+//         }else{
+//             result.push(right[j]);
+//             j++;
+//         }
+//     }
+//     return result.concat(left.slice(i)).concat(right.slice(j));
+// }
+
+// console.log(mergeSort(arr));
+
+
+                                                                        // Quick Sort
+// const arr=[5,3,8,4,2,1,9,7,6,10];
+
+// function quickSort(arr){
+//     let n=arr.length;
+//     if(n<=1){
+//         return arr;
+//     }
+//     let pivotIndex=Math.floor(n/2);
+//     let pivotValue=arr[pivotIndex];
+//     let left=[];
+//     let right=[];
+    
+//     for(let i=0;i<arr.length;i++){
+//         if(arr[i] === pivotValue){
+//             continue;
+//         }
+//         if(arr[i] < pivotValue){
+//            left.push(arr[i]);
+//         }else{
+//             right.push(arr[i]);
+//         }
+//     }
+//     return [...quickSort(left), pivotValue, ...quickSort(right)];
+// }
+
+// console.log(quickSort(arr));
